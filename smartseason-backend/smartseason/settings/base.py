@@ -34,12 +34,12 @@ INSTALLED_APPS = [
     "drf_spectacular",
 
     # Local apps — one concern each (SOLID separation)
-    "apps.core",
-    "apps.users",
-    "apps.fields",
-    "apps.updates",
-    "apps.dashboards",
-    "apps.audit",
+    #"apps.core",
+    #"apps.users",
+    #"apps.fields",
+    #"apps.updates",
+    #"apps.dashboards",
+    #"apps.audit",
 ]
 
 MIDDLEWARE = [
