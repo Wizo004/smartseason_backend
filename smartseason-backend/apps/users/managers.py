@@ -5,13 +5,24 @@ class UserManager(BaseUserManager):
     use_in_migrations = True
 
     def _create(self, email, password, **extra):
-        if not email:
-            raise ValueError("Email is required")
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra)
-        user.set_password(password)  # hashes via Django's PBKDF2 by default
-        user.save(using=self._db)
-        return user
+    if not email:
+        raise ValueError("Email is required")
+
+    email = self.normalize_email(email)
+
+    full_name = extra.pop("full_name", None)
+    role = extra.pop("role", "field_agent")
+
+    user = self.model(
+        email=email,
+        full_name=full_name,
+        role=role,
+        **extra
+    )
+
+    user.set_password(password)
+    user.save(using=self._db)
+    return user
 
     def create_user(self, email, password=None, **extra):
         extra.setdefault("role", "field_agent")
