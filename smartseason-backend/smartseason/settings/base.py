@@ -6,13 +6,14 @@ import os
 from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 load_dotenv(BASE_DIR / ".env")  # safe no-op if file missing
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "insecure-dev-key-change-me")
 DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
-ALLOWED_HOSTS = [h.strip() for h in os.getenv("DJANGO_ALLOWED_HOSTS", "").split(",") if h.strip()]
+ALLOWED_HOSTS = ["your-service-name.onrender.com", "localhost", "127.0.0.1"]
 
 # ---- Apps ----
 INSTALLED_APPS = [
@@ -66,17 +67,11 @@ TEMPLATES = [{
     ]},
 }]
 
-# ---- Database (MySQL) ----
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME", "smartseason"),
-        "USER": os.getenv("DB_USER", "root"),
-        "PASSWORD": "@Jokersmoker2004",
-        "HOST": os.getenv("DB_HOST", "127.0.0.1"),
-        "PORT": os.getenv("DB_PORT", "3306"),
-        "OPTIONS": {"charset": "utf8mb4"},
-    }
+# ---- Database (PostgreSQL) ----
+DATABASES = DATABASES = {
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
 
 # ---- Custom user model — required to have role + email-as-username ----
