@@ -51,7 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "apps.core.middleware.RequestLoggingMiddleware",  # structured request logs
+    #"apps.core.middleware.RequestLoggingMiddleware",  # structured request logs
 ]
 
 ROOT_URLCONF = "smartseason.urls"
