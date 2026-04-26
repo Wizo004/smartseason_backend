@@ -35,7 +35,7 @@ INSTALLED_APPS = [
 
     # Local apps — one concern each (SOLID separation)
     #"apps.core",
-    #"apps.users",
+    "apps.users",
     #"apps.fields",
     #"apps.updates",
     #"apps.dashboards",
