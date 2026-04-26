@@ -4,7 +4,7 @@ import os, sys
 
 def main():
     # Default to dev settings; override with DJANGO_SETTINGS_MODULE in prod.
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "smartseason.settings.dev")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "smartseason.settings.prod")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
