@@ -23,13 +23,12 @@ class UserManager(BaseUserManager):
     user.set_password(password)
     user.save(using=self._db)
     return user
-
-    def create_user(self, email, password=None, **extra):
-        extra.setdefault("role", "field_agent")
-        extra.setdefault("is_staff", False)
-        extra.setdefault("is_superuser", False)
-        return self._create(email, password, **extra)
-
+    
+def create_user(self, email, password=None, **extra):
+    extra.setdefault("role", "field_agent")
+    extra.setdefault("is_staff", False)
+    extra.setdefault("is_superuser", False)
+    return self._create(email, password, **extra)
     def create_superuser(self, email, password=None, **extra):
         extra.update(is_staff=True, is_superuser=True, role="admin", is_active=True)
         return self._create(email, password, **extra)
