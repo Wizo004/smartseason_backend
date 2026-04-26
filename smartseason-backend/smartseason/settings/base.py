@@ -13,7 +13,8 @@ load_dotenv(BASE_DIR / ".env")  # safe no-op if file missing
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "insecure-dev-key-change-me")
 DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
-ALLOWED_HOSTS = ["your-service-name.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["your-service-name.onrender.com", "localhost", "127.0.0.1",
+                "smartseason-api-rbc2.onrender.com",]
 
 # ---- Apps ----
 INSTALLED_APPS = [
